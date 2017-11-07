@@ -97,10 +97,10 @@ if(!empty($forms)){
 <?= "        <?= " ?>Html::submitButton(<?=$generator->generateString('Save As New')?>, ['class' => 'btn btn-info', 'value' => '1', 'name' => '_asnew']) ?>
 <?= "    <?php endif; ?>\n" ?>
 <?php else: ?>
-<?= "        <?= " ?>Html::submitButton($model->isNewRecord ? <?= $generator->generateString('Create') ?> : <?= $generator->generateString('Update') ?>, ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+<?= "        <?= " ?>Html::submitButton($model->isNewRecord ? ثبت : بروزرسانی, ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 <?php endif; ?>
 <?php if ($generator->cancelable): ?>
-        <?= "<?= " ?>Html::a(Yii::t('app', 'Cancel'), Yii::$app->request->referrer , ['class'=> 'btn btn-danger']) ?>
+        <?= "<?= " ?>Html::a('لغو و بستن فرم', '#' , ['class'=> 'btn btn-danger', 'id' => 'cancel']) ?>
 <?php endif; ?>
     </div>
 

@@ -19,35 +19,33 @@ echo "<?php\n";
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\helpers\Html;
+use yii\bootstrap\Modal;
 use kartik\export\ExportMenu;
 use <?= $generator->indexWidgetType === 'grid' ? "kartik\\grid\\GridView;" : "yii\\widgets\\ListView;" ?>
 
 
 $this->title = <?= ($generator->pluralize) ? $generator->generateString(Inflector::pluralize(Inflector::camel2words($baseModelClass))) : $generator->generateString(Inflector::camel2words($baseModelClass)) ?>;
 $this->params['breadcrumbs'][] = $this->title;
-$search = "$('.search-button').click(function(){
-	$('.search-form').toggle(1000);
-	return false;
-});";
+$('#createbtn').click(function(e) {
+e.preventDefault();
+$('#CreateModal').modal('show');
+});
+$('#cancel').click(function(e) {
+e.preventDefault();
+$('#CreateModal').modal('hide');
+});
 $this->registerJs($search);
+Modal::begin(['id' => 'CreateModal']);
+echo $this->render('create',['model'=> $model]);
+Modal::end();
 ?>
 <div class="<?= Inflector::camel2id($baseModelClass) ?>-index">
 
-    <h1><?= "<?= " ?>Html::encode($this->title) ?></h1>
-<?php if (!empty($generator->searchModelClass)): ?>
-<?= "    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
-<?php endif; ?>
-
     <p>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('Create ' . Inflector::camel2words($baseModelClass)) ?>, ['create'], ['class' => 'btn btn-success']) ?>
+        <?= "<?= " ?>Html::a(<?= $generator->generateString('Create ' . Inflector::camel2words($baseModelClass)) ?>, ['#'], ['class' => 'btn btn-success','id'=>'createbtn']) ?>
 <?php if (!empty($generator->searchModelClass)): ?>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('Advance Search')?>, '#', ['class' => 'btn btn-info search-button']) ?>
-<?php endif; ?>
     </p>
 <?php if (!empty($generator->searchModelClass)): ?>
-    <div class="search-form" style="display:none">
-        <?= "<?= " ?> $this->render('_search', ['model' => $searchModel]); ?>
-    </div>
     <?php endif; ?>
 <?php 
 if ($generator->indexWidgetType === 'grid'): 
