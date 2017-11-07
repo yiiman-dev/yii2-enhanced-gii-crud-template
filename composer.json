@@ -1,0 +1,31 @@
+{
+    "name": "amintado/yii2-enhanced-gii-crud-template",
+
+    "type": "yii2-extension",
+
+    "description": "crud template for persian language",
+    "keywords": ["yii2", "mootensai enhanced gii", "enhanced gii", "gii","gii template"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/amintado/yii2-enhanced-gii-crud-template/issues",
+        "forum": "",
+        "wiki": "https://github.com/amintado/yii2-enhanced-gii-crud-template/wiki",
+        "source": "https://github.com/amintado/yii2-enhanced-gii-crud-template"
+    },
+    "authors": [
+        {
+            "name": "gholamreza beheshtian",
+            "email": "amintado@gmail.com",
+            "mobile": "+989353466620",
+            "instagram":"@shahrmap",
+            "telegram":"@amintado"
+        }
+    ],
+
+    "require": {
+        "yiisoft/yii2": "2.*",
+        "yiisoft/yii2-bootstrap": "2.*",
+        "mootensai/yii2-enhanced-gii":"*"
+    }
+
+}
