@@ -91,10 +91,18 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 <?php if (!empty($generator->searchModelClass)): ?>
         $searchModel = new <?= isset($searchModelAlias) ? $searchModelAlias : $searchModelClass ?>();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $model = new <?= $modelClass ?>();
+        if (!empty(Yii::$app->request->post())){
+        $model->load(Yii::$app->request->post());
+
+        $model->save();
+        }
+
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model'=>$model
         ]);
 <?php else : ?>
         $dataProvider = new ActiveDataProvider([
@@ -186,7 +194,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
      */
     public function actionDelete(<?= $actionParams ?>)
     {
-        $this->findModel(<?= $actionParams ?>)->deleteWithRelated();
+        $this->findModel(<?= $actionParams ?>)->delete();
 
         return $this->redirect(['index']);
     }

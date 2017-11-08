@@ -91,13 +91,13 @@ if(!empty($forms)){
     <div class="form-group">
 <?php if($generator->saveAsNew): ?>
 <?= "    <?php if(Yii::\$app->controller->action->id != 'save-as-new'): ?>\n" ?>
-<?= "        <?= " ?>Html::submitButton($model->isNewRecord ? <?= $generator->generateString('Create') ?> : <?= $generator->generateString('Update') ?>, ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+<?= "        <?= " ?>Html::submitButton($model->isNewRecord ? <?= $generator->generateString('ثبت') ?> : <?= $generator->generateString('بروزرسانی') ?>, ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 <?= "    <?php endif; ?>\n" ?>
-<?= "    <?php if(Yii::\$app->controller->action->id != 'create'): ?>\n" ?>
-<?= "        <?= " ?>Html::submitButton(<?=$generator->generateString('Save As New')?>, ['class' => 'btn btn-info', 'value' => '1', 'name' => '_asnew']) ?>
+<?= "    <?php if(Yii::\$app->controller->action->id != 'index'): ?>\n" ?>
+<?= "        <?= " ?>Html::submitButton(<?=$generator->generateString('ایجاد یک کپی')?>, ['class' => 'btn btn-info', 'value' => '1', 'name' => '_asnew']) ?>
 <?= "    <?php endif; ?>\n" ?>
 <?php else: ?>
-<?= "        <?= " ?>Html::submitButton($model->isNewRecord ? ثبت : بروزرسانی, ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+<?= "        <?= " ?>Html::submitButton($model->isNewRecord ? <?=$generator->generateString('ثبت')?> : <?=$generator->generateString('بروزرسانی')?>, ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 <?php endif; ?>
 <?php if ($generator->cancelable): ?>
         <?= "<?= " ?>Html::a('لغو و بستن فرم', '#' , ['class'=> 'btn btn-danger', 'id' => 'cancel']) ?>

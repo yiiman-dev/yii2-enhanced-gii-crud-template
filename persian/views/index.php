@@ -26,6 +26,8 @@ use <?= $generator->indexWidgetType === 'grid' ? "kartik\\grid\\GridView;" : "yi
 
 $this->title = <?= ($generator->pluralize) ? $generator->generateString(Inflector::pluralize(Inflector::camel2words($baseModelClass))) : $generator->generateString(Inflector::camel2words($baseModelClass)) ?>;
 $this->params['breadcrumbs'][] = $this->title;
+$j=<<<JS
+
 $('#createbtn').click(function(e) {
 e.preventDefault();
 $('#CreateModal').modal('show');
@@ -34,7 +36,8 @@ $('#cancel').click(function(e) {
 e.preventDefault();
 $('#CreateModal').modal('hide');
 });
-$this->registerJs($search);
+JS;
+$this->registerJs($j);
 Modal::begin(['id' => 'CreateModal']);
 echo $this->render('create',['model'=> $model]);
 Modal::end();
@@ -43,7 +46,7 @@ Modal::end();
 
     <p>
         <?= "<?= " ?>Html::a(<?= $generator->generateString('Create ' . Inflector::camel2words($baseModelClass)) ?>, ['#'], ['class' => 'btn btn-success','id'=>'createbtn']) ?>
-<?php if (!empty($generator->searchModelClass)): ?>
+
     </p>
 <?php if (!empty($generator->searchModelClass)): ?>
     <?php endif; ?>
@@ -110,7 +113,7 @@ if ($generator->indexWidgetType === 'grid'):
         'pjax' => true,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-<?= Inflector::camel2id(StringHelper::basename($generator->modelClass))?>']],
         'panel' => [
-            'type' => GridView::TYPE_PRIMARY,
+            'type' => GridView::TYPE_ACTIVE,
             'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
         ],
 <?php if(!$generator->pdf) : ?>
@@ -125,10 +128,10 @@ if ($generator->indexWidgetType === 'grid'):
                 'target' => ExportMenu::TARGET_BLANK,
                 'fontAwesome' => true,
                 'dropdownOptions' => [
-                    'label' => 'Full',
+                    'label' => 'استخراح همه ی اطلاعات',
                     'class' => 'btn btn-default',
                     'itemsBefore' => [
-                        '<li class="dropdown-header">Export All Data</li>',
+                        '<li class="dropdown-header">استخراج همه ی اطلاعات</li>',
                     ],
                 ],
 <?php if(!$generator->pdf):?>

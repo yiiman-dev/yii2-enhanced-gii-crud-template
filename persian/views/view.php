@@ -46,14 +46,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
 <?php endif; ?>
 <?php if($generator->saveAsNew): ?>
-<?= "            <?= Html::a(" . 'ایجاد یک کپی' . ", ['save-as-new', " . $generator->generateUrlParams() . "], ['class' => 'btn btn-info']) ?>" ?>
+<?= "            <?= Html::a(" .  $generator->generateString('ایجاد یک کپی'). ", ['save-as-new', " . $generator->generateUrlParams() . "], ['class' => 'btn btn-info']) ?>" ?>
 <?php endif;?>
             <?= "
-            <?= Html::a(" . 'بروزرسانی' . ", ['update', " . $generator->generateUrlParams() . "], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a(" . 'حذف' . ", ['delete', " . $generator->generateUrlParams() . "], [
+            <?= Html::a(" .  $generator->generateString('بروزرسانی')  . ", ['update', " . $generator->generateUrlParams() . "], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a(" . $generator->generateString('حذف') . ", ['delete', " . $generator->generateUrlParams() . "], [
                 'class' => 'btn btn-danger',
                 'data' => [
-                    'confirm' => " . 'این آیتم حذف خواهد شد، از این بابت اطمینان دارید؟' . ",
+                    'confirm' => " . $generator->generateString('این آیتم حذف خواهد شد،از این بابت اطمینان دارید؟')  . ",
                     'method' => 'post',
                 ],
             ])
