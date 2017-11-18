@@ -98,7 +98,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         $model->save();
         }
 
-
+        $model=new <?= $modelClass ?>();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
